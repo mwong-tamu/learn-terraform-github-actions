@@ -41,7 +41,7 @@ variable "ready_instance_type" {
 }
 
 variable "ready_version" {
-  default = "ready-13-2-release:latest"
+  default = "ready-13-3-release:latest"
 }
 
 variable "ready_hostname" {}
@@ -74,7 +74,7 @@ variable "acme_provider" {
   type        = string
 }
 
-variable "in_maintenace_mode" {
+variable "in_maintenance_mode" {
   default = false
   type    = bool
 }
