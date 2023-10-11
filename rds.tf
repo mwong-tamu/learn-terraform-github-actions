@@ -1,10 +1,10 @@
 locals {
-  #aim_db_password = var.aim_db_password_op_item_uuid != null ? data.onepassword_item.copy_aim_db_password[0].password : (var.aim_db_password != null ? var.aim_db_password : random_password.aim_db.result)
+  aim_db_password = "Aggies2023!" #var.aim_db_password_op_item_uuid != null ? data.onepassword_item.copy_aim_db_password[0].password : (var.aim_db_password != null ? var.aim_db_password : random_password.aim_db.result)
 }
 
 resource "aws_db_subnet_group" "aim_db" {
   name       = "aim-${var.env_name}-rds-subnet-group"
-  subnet_ids = [data.aws_subnet.campus_1.id, data.aws_subnet.campus_2.id]
+  subnet_ids = [data.aws_subnet.private_1.id,data.aws_subnet.private_2.id]
 }
 
 resource "aws_db_option_group" "aim_db" {
@@ -25,12 +25,12 @@ resource "aws_db_option_group" "aim_db" {
 
 resource "aws_db_parameter_group" "aim_db" {
   name        = "aim-${var.env_name}-rds-param-group"
-  family      = "sqlserver-se"
+  family      = "sqlserver-se-15.0"
   description = "Database parameter group for ${var.env_name} AIM RDS instance"
 
   parameter {
     name  = "cost threshold for parallelism"
-    value = "50"
+    value = "5"
   }
 }
 
@@ -57,10 +57,11 @@ resource "aws_security_group" "rds" {
     to_port   = 1434
     protocol  = "tcp"
     # cidr_blocks     = var.rds_ingress.cidr_blocks
-    prefix_list_ids = ["pl-01baada8612ac4fef"] # TAMU Networks
-    security_groups = [
-      aws_security_group.aim.id
-    ]
+    cidr_blocks = ["0.0.0.0/0"]
+    # prefix_list_ids = ["pl-01baada8612ac4fef"] # TAMU Networks
+    # security_groups = [
+    #   aws_security_group.aim.id
+    # ]
   }
 
   lifecycle {
