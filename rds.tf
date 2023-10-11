@@ -1,5 +1,5 @@
 locals {
-  aim_db_password = var.aim_db_password_op_item_uuid != null ? data.onepassword_item.copy_aim_db_password[0].password : (var.aim_db_password != null ? var.aim_db_password : random_password.aim_db.result)
+  #aim_db_password = var.aim_db_password_op_item_uuid != null ? data.onepassword_item.copy_aim_db_password[0].password : (var.aim_db_password != null ? var.aim_db_password : random_password.aim_db.result)
 }
 
 resource "aws_db_subnet_group" "aim_db" {
