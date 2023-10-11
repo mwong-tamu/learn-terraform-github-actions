@@ -19,6 +19,15 @@ provider "aws" {
   region = "us-west-2"
 }
 
+provider "aws" {
+  region = var.region
+}
+
+provider "aws" {
+  alias  = "dr"
+  region = var.dr_region
+}
+
 resource "random_pet" "sg" {}
 
 data "aws_ami" "ubuntu" {
