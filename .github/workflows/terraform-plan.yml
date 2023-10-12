@@ -2,10 +2,13 @@ name: "Terraform Plan"
 
 on:
   pull_request:
+    branches:
+      - main
 
 env:
   TF_CLOUD_ORGANIZATION: "mwong-tamu"
   TF_API_TOKEN: "${{ secrets.TF_API_TOKEN }}"
+  env_name: ${{ github.ref_name == 'main' && 'staging' || github.ref_name }}
   TF_WORKSPACE: "learn-terraform-github-actions"
   CONFIG_DIRECTORY: "./"
 

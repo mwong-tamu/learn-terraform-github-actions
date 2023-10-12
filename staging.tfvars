@@ -20,7 +20,7 @@ acme_provider = "https://acme-v02.api.letsencrypt.org/directory"
 in_maintenance_mode           = false
 maintenance_mode_cname_value = "None"
 
-force_destroy  = false
+force_destroy  = true
 enable_backups = false
 
 
