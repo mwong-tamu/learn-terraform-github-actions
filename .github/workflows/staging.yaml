@@ -27,8 +27,8 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan using staging.tfvars
-        run: terraform plan -var-file="staging.tfvars"
+        run: terraform plan -var-file='staging.tfvars'
 
       - name: Terraform Apply using staging.tfvars
         if: github.ref == 'refs/heads/main' # Only apply on main branch
-        run: terraform apply -var-file="staging.tfvars" -auto-approve
+        run: terraform apply -var-file='staging.tfvars' -auto-approve
