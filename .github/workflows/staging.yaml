@@ -1,9 +1,16 @@
 name: Terraform CI for Staging
 
 on:
-  push:
-    branches:
-      - main
+    pull_request:
+      branches:
+        - main
+  
+  env:
+    TF_CLOUD_ORGANIZATION: "mwong-tamu"
+    TF_API_TOKEN: "${{ secrets.TF_API_TOKEN }}"
+    env_name: ${{ github.ref_name == 'main' && 'staging' || github.ref_name }}
+    TF_WORKSPACE: "learn-terraform-github-actions"
+    CONFIG_DIRECTORY: "./"
 
 jobs:
   terraform:
@@ -15,7 +22,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
+        uses: hashicorp/setup-terraform@v2
 
       - name: Terraform Initialize
         run: terraform init
