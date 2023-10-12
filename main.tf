@@ -20,6 +20,15 @@ terraform {
   #   key            = "account-tfstate/terraform.tfstate"
   #   dynamodb_table = "account-tfstate"
   # }
+
+  backend "remote" {
+    organization = "mwong-tamu"
+    workspaces {
+      prefix = "learn-terraform-github-actions"
+    }
+  }
+}
+
 }
 
 provider "aws" {
