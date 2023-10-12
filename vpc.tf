@@ -25,3 +25,4 @@ data "aws_subnet" "private_2" {
 # data "aws_subnet" "public_2" {
 #   id = local.subnets["public_2"]
 # }
+
