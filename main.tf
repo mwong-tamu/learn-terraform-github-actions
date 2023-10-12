@@ -20,6 +20,7 @@ terraform {
   #   key            = "account-tfstate/terraform.tfstate"
   #   dynamodb_table = "account-tfstate"
   # }
+
 }
 
 provider "aws" {
