@@ -8,6 +8,9 @@
 # .tfstate files
 *.tfstate
 *.tfstate.*
+*.pem
+*.pub
+.aws*
 
 # Crash log files
 crash.log

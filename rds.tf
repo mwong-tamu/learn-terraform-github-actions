@@ -102,7 +102,7 @@ resource "aws_db_instance" "aim" {
   allow_major_version_upgrade           = false
   option_group_name                     = aws_db_option_group.aim_db.name
   engine                                = "sqlserver-se"
-  engine_version                        = "15.00.4316.3.v1"
+  engine_version                        = "15.00.4335.1.v1"
   instance_class                        = var.aim_db_instance_type
   username                              = "admin"
   password                              = local.aim_db_password
@@ -111,7 +111,7 @@ resource "aws_db_instance" "aim" {
   publicly_accessible                   = false
   snapshot_identifier                   = var.aim_db_snapshot_identifier
   skip_final_snapshot                   = true
-  storage_type                          = "gp2"
+  storage_type                          = "gp3"
   license_model                         = "license-included"
   db_subnet_group_name                  = aws_db_subnet_group.aim_db.name
   deletion_protection                   = var.force_destroy ? false : true
