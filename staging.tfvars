@@ -3,7 +3,7 @@ region    = "us-west-2"
 dr_region = "us-west-1"
 
 aim_instance_type            = "r6a.xlarge"
-aim_db_instance_type         = "db.m5.2xlarge"
+aim_db_instance_type         = "db.m6i.2xlarge"
 aim_db_name                  = "aim"
 aim_hostname                 = "aim-staging.assetworks.cloud.tamu.edu"
 aim_db_password_op_item_uuid = "s5sjhwvhve63l5b42yrd2f6oiq"
